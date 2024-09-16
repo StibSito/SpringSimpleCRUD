@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>user table</h1>
+
+	<div>
+		<a type="button" th:href="@{/chargeForm}">Add Client</a>
+	</div>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>LAST NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>EDIT</th>
+				<th>DELETE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="u : ${lstUsers}">
+				<td th:text="${u.id}"></td>
+				<td th:text="${u.name}"></td>
+				<td th:text="${u.lastName}"></td>
+				<td th:text="${u.email}"></td>
+				<td th:text="${u.phone}"></td>
+				<td><a th:href="@{/edit/} + ${u.id}" th:text="Edit"></a></td>
+				<td><a th:href="@{/delete(id=${u.id})}" th:text="Delete"></a></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
